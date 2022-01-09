@@ -1,0 +1,21 @@
+﻿@model List<MVC_StokOtomasyonProje.Models.Entity.Urunler>
+@{
+    ViewBag.Title = "Kategoriler";
+    Layout = "~/Views/Shared/_GenelLayout.cshtml";
+}
+
+<h2>@ViewBag.kategori Kategorisindeki Ürünler</h2>
+
+<div>
+    @foreach (var item in Model)
+    {
+        <div>ürün Adı: @item.BarkodNo -@item.UrunAdi</div>
+        <div>Satış Fiyatı: @item.SatisFiyati</div>
+        <div>KDV: Tutarı: @item.KDV</div>
+        <div>Birimi: @item.Birimler.Birim</div>
+        <div>
+            <button class="btn btn-light">Detay</button>
+        </div>
+        <hr />
+    }
+</div>

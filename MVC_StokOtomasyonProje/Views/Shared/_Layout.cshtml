@@ -1,0 +1,164 @@
+﻿@using MVC_StokOtomasyonProje.ActiveFolder
+@using MVC_StokOtomasyonProje.Models.Entity;
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <title>MVC STOK OTOSMASYON PROJESİ</title>
+    <!---Bootstrap core CSS-->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/styledanger.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <!--Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top ">
+
+        <div class="container">
+            <a class="navbar-brand" href="#">Stok Takip Otomasyonu</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item px-lg-4 @Html.ActivePage("Urunler", "Index")">
+                        <a class="nav-link" href="/Urunler/Index/"> Ürünler</a>
+                    </li>
+
+                    @* @if (User.IsInRole("") || User.IsInRole(""))
+        {*@
+                    <li class="nav-item">
+                        <a class="nav-link px-lg-4 @Html.ActivePage("Satislar", "Index")" href="/Satislar/Index/">Satışlar</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link px-lg-4 @Html.ActivePage("Kategoriler", "Index")" href="/Kategoriler/Index/">Kategoriler</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link px-lg-4 @Html.ActivePage("Kategoriler2", "Index")" href="/Kategoriler2/Index/">Kategoriler-2</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link px-lg-4 @Html.ActivePage("Markalar", "Index")" href="/Markalar/Index/">Markalar</a>
+                    </li>
+                    @*}*@
+
+                     @if (User.IsInRole("A") || User.IsInRole("U"))
+        {
+                    <li class="nav-item">
+                        <a class="nav-link px-lg-4 @Html.ActivePage("Birimler", "Index")" href="/Birimler/Index/">Birimler</a>
+                    </li>
+                     }
+
+                    @*
+        <li class="nav-item">
+        <a class="nav-link px-lg-4" href="/Kullanicilar/Logout/">Çıkış</a>
+        </li>
+
+         @<li class="nav-item">
+         <a class="nav-link px-lg-4" style="color:ActiveBorder">@User.Identity.Name</a>
+         </li>*@
+
+                    <li class="nav-item">
+                        <div class="dropdown" style="color:white">
+                            <a href="#" class="nav-link px-lg-4" data-toggle="dropdown">
+                                @User.Identity.Name
+                                <i class="fa fa-caret-down" style="color:#ccc" aria-hidden="true"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/Home/Index/">
+                                    Siteye Geçiş
+                                </a>
+                                
+                                <a class="dropdown-item" href="/Kullanicilar/Guncelle/">
+                                    Bilgileri Güncelle
+                                </a>
+
+                                <a class="dropdown-item" href="/Kullanicilar/Logout/">
+                                    Çıkış
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <div style="position: relative">
+                            <a class="nav-link px-lg-4" href="/Sepet/Index/">
+                                <img src="~/img/basket4.png" width="35" height="35" />
+
+                              @{
+                        MVC_StokProjeEntities db = new MVC_StokProjeEntities();
+                        var model = db.Kullanicilar.FirstOrDefault(x => x.KullaniciAdi.Equals(User.Identity.Name));
+                        if (model != null)
+                        {
+                            int count = db.Sepet.Where(x => x.KullaniciID.Equals(model.ID)).Count();
+                            if (count > 0)
+                            {
+                                <label class="basket">
+                                    @{Html.RenderAction("TotalCount", "Sepet");}
+                                </label>
+                            }
+                            if (count == 0)
+                            {
+                                <label class="basket" style="background-color:transparent">
+                                    @{Html.RenderAction("TotalCount", "Sepet");}
+                                </label>
+
+                            }
+                        }
+                    }
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <style>
+        .basket{
+          background: #ea222f;
+          color: #fff;
+          font-size: 10px;
+          font-weight: 400;
+          position: absolute;
+          left: 20px;
+          top: 7px;
+          height: 16px;
+          width: 16px;
+          text-align:center;
+          line-height:16px;
+          border-radius:8px;
+        }
+    </style>
+
+    <!--Page Content-->
+    <div class="container" style="margin-top:20px;">
+        <div class="row navbar-static-top">
+            @RenderBody()
+        </div>
+    </div>
+    <footer class="footer text-faded text-center px-xl-5 navbar-fixed-bottom">
+        <div class="container">
+
+            <p class="m-0 table-sm"> Copyright & copy; Stok Takip Otomasyonu Web Sitesi</p>
+        </div>
+    </footer>
+
+    <!--Boostrap core JavaScript-->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("scriptdanger", false)
+    @RenderSection("scripts", false)
+</body>
+
+</html>

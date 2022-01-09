@@ -1,0 +1,99 @@
+﻿@model List<MVC_StokOtomasyonProje.Models.Entity.Urunler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+
+        <div class="form-group">
+            <div style="width:25%; float:left; margin-left:-15px">
+                @Html.TextBox("ara", null, new { @class = "form-control", @placeholder = "Aranacak ürün adı veya barkod-no" })
+            </div>
+
+            <div style="float:left">
+                @Html.ActionLink("Ara", "Index", null, new { @class = "btn btn-info", onclick = "$(this).parents('form').attr('action',$(this).attr('href')); $(this).parents('form').submit(); return:false;" })
+            </div>
+        </div>
+    }
+</div>
+
+
+<h2>Ürün Listesi</h2>
+<table class="table">
+    <thead style="background-color:aliceblue">
+        <tr>
+            @*<th>ID</th>
+            <th>Kategori</th>
+            <th>Marka</th>*@
+            <th>Ürün Adı</th>
+            <th>Barkod No</th>
+            @*<th>Alış Fiyatı</th>*@
+            <th>Fiyatı</th>
+            @*<th>Miktarı</th>*@
+            <th>Birim</th>
+            <th>K.D.V</th>
+            <th>Tarih</th>
+            <th>Açıklama</th>
+            @if (User.IsInRole("A")) 
+            {
+                <th></th>
+                <th></th>
+                <th></th>
+            }
+            <td></td>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @* <th>@Html.DisplayFor(x => item.ID)</th>
+                    <td>@Html.DisplayFor(x => item.Kategoriler.Kategori)</td>
+                    <td>@Html.DisplayFor(x => item.Markalar.Marka)</td>*@
+                <td>@Html.DisplayFor(x => item.UrunAdi)</td>
+                <td>@Html.DisplayFor(x => item.BarkodNo)</td>
+                @*<td>@Html.DisplayFor(x => item.AlisFiyati)</td>*@
+                <td>@Html.DisplayFor(x => item.SatisFiyati)</td>
+                @*<td>@Html.DisplayFor(x => item.Miktar)</td>*@
+                <td>@Html.DisplayFor(x => item.Birimler.Birim)</td>
+                <td>% @Html.DisplayFor(x => item.KDV)</td>
+                <td>@Html.DisplayFor(x => item.Tarih)</td>
+                <td>@Html.DisplayFor(x => item.Aciklama)</td>
+                @if (User.IsInRole("A"))
+                {
+                    <td>@Html.ActionLink("Sil", "SilBilgiGetir", new { id = item.ID }, new { @class = "btn btn-danger" })</td>
+                    <td>@Html.ActionLink("Güncelle", "GuncelleBilgiGetir", new { id = item.ID }, new { @class = "btn btn-primary" })</td>
+                    <td style="height25px">@Html.ActionLink("Miktar Ekle", "MiktarEkle", new { id = item.ID }, new { @class = "btn btn-secondary" })</td>
+
+                }
+
+                <td style="float:right">@Html.ActionLink("SepeteEkle", "SepeteEkle", "Sepet", new { id = item.ID }, new { @class = "btn btn-success" })</td>
+
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+<div class="form-group container">
+    <div style="float:left">
+        @*@if (User.IsInRole("A"))
+            {*@
+        <a href="/Urunler/Ekle/" class="btn btn-success">Ürün Ekle</a>
+        @*}*@
+    </div>
+    
+    <div style="float:right">
+        <a href="@Url.Action("ExcelExport","Urunler")" class="btn btn-dark">Excel Export</a>
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>

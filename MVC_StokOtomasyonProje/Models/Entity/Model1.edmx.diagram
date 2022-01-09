@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3b464e72bb3b41319378bc90a5999fdb" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="MVC_StokProjeModel.Birimler" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_StokProjeModel.Kategoriler" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_StokProjeModel.Kullanicilar" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_StokProjeModel.KullaniciRolleri" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_StokProjeModel.Markalar" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_StokProjeModel.Musteriler" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_StokProjeModel.Roller" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_StokProjeModel.Urunler" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="MVC_StokProjeModel.FK_Urunler_Birimler" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_StokProjeModel.FK_Markalar_Kategoriler" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_StokProjeModel.FK_Urunler_Kategoriler" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_StokProjeModel.FK_KullaniciRolleri_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_StokProjeModel.FK_KullaniciRolleri_Roller" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_StokProjeModel.FK_Urunler_Markalar" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MVC_StokProjeModel.Sepet" Width="1.5" PointX="7.5" PointY="6" />
+        <AssociationConnector Association="MVC_StokProjeModel.FK_Sepet_Kullanicilar" />
+        <AssociationConnector Association="MVC_StokProjeModel.FK_Sepet_Urunler" />
+        <EntityTypeShape EntityType="MVC_StokProjeModel.Satislar" Width="1.5" PointX="10.5" PointY="5.75" />
+        <AssociationConnector Association="MVC_StokProjeModel.FK_Satislar_Kullanicilar" />
+        <AssociationConnector Association="MVC_StokProjeModel.FK_Satislar_Urunler" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

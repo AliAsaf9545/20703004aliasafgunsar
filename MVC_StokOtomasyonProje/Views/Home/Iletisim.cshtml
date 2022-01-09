@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Iletisim";
+    Layout = "~/Views/Shared/_GenelLayout.cshtml";
+}
+
+<h3 style="margin-top:10px;">İletişim Sayfası</h3>
+
+<!-- Content Row -->
+<div class="row">
+    <!-- Map Column -->
+    <div class="col-lg-8 mb-4">
+        <!-- Embedded Google Map -->
+        <img src="~/img/iletisim.jpg" style="width: 100%; height: 450px; border: 0;"/ >
+    </div>
+    <!-- Contact Details Column -->
+    <div class="col-lg-4 mb-4">
+        <h3>İletişim detayları</h3>
+
+        <p>
+            <abbr title="Phone">Telefon</abbr>: (123) 456-7890
+        </p>
+        <p>
+            <abbr title="Email">Mail</abbr>:
+            <a href="mailto:name@example.com">
+                ceyhungunsar1997@gmail.com
+            </a>
+        </p>
+        <p>
+            <abbr title="Hours">Saat</abbr>: Pazartesi - Cuma: 09:00 - 17:00
+        </p>
+    </div>
+</div>
+<!-- /.row -->
+<!-- Contact Form -->
+<!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+<div class="row">
+    <div class="col-lg-8 mb-4">
+        <h3>
+            Bize mesaj gönder
+        </h3>
+        <form name="sentMessage" id="contactForm" novalidate>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Tam İsim:</label>
+                    <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Telefon Numarası:</label>
+                    <input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Mail Adresi:</label>
+                    <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Mesaj:</label>
+                    <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+                </div>
+            </div>
+            <div id="success"></div>
+            <!-- For success/fail messages -->
+            <button type="submit" class="btn btn-primary" id="sendMessageButton">Mesaj gönder</button>
+        </form>
+    </div>
+
+</div>
+<!-- /.row -->

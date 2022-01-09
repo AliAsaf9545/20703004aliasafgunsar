@@ -1,0 +1,32 @@
+﻿@model MVC_StokOtomasyonProje.Models.Entity.Birimler
+@{
+    ViewBag.Title = "SilBilgiGetir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Birim Silme Sayfası</h2>
+<div class="container">
+    @using (Html.BeginForm("Sil", "Birimler"))
+    {
+        <h1></h1>
+        <h4>Kayıt Slinsin mi?</h4>
+        <div class="form-group">
+            @Html.HiddenFor(x => x.ID)
+            <b>@Html.LabelFor(x => x.Birim)</b>
+            @Html.DisplayFor(x => x.Birim, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <b>@Html.LabelFor(x => x.Aciklama)</b>
+            @Html.DisplayFor(x => x.Aciklama, new { @class = "form-control" })
+        </div>
+
+        <div>
+            <button class="btn btn-danger">Birim Sil</button>
+            &nbsp; <a class="btn btn-success" href="/Birimler/Index/">Anasayfa</a>
+        </div>
+
+    }
+
+
+</div>

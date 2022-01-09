@@ -1,0 +1,25 @@
+﻿@model List<MVC_StokOtomasyonProje.Models.Entity.Urunler>
+@{
+    ViewBag.Title = "Urunler";
+    Layout = "~/Views/Shared/_GenelLayout.cshtml";
+}
+
+
+    <h2 style="margin-top:8px">Tüm Ürünler</h2>
+    @*<img src="~/img/.jpg" style="opacity:0.35; position:absolute;width:100%;height:250%;left:0px;top:-30px; z-index:-1" />
+        <img src="~/img/.jpg" style="opacity:0.35; position:absolute;width:100%;height:264.5%;left:0px;top:246.4%; z-index:-1" />*@
+    <div style="">
+        @foreach (var item in Model)
+        {
+            <div><strong>ürün Adı: @item.BarkodNo -@item.UrunAdi</strong></div>
+            <div><strong>Satış Fiyatı: @item.SatisFiyati</strong></div>
+            <div><strong> Tutarı: @item.KDV</strong></div>
+            <div><strong> @item.Birimler.Birim</strong></div>
+
+            <div>
+                <a href="~/Kullanicilar/Login/" class="btn btn-outline-success"><strong>Detay</strong></a>
+            </div>
+            <hr />
+        }
+
+    </div>

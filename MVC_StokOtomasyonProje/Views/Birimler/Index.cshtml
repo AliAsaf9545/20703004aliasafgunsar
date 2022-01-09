@@ -1,0 +1,43 @@
+﻿@using MVC_StokOtomasyonProje.Models.Entity
+
+@model  List<MVC_StokOtomasyonProje.Models.Entity.Birimler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Birim Listesi</h2>
+
+<table class="table table-bordered">
+    <thead style="background-color:aliceblue">
+        <tr>
+            <th>ID</th>
+            <th>Birim</th>
+            <th>Açıklama</th>
+
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Birim</td>
+                <td>@item.Aciklama</td>
+                <td><a href="/Birimler/SilBilgiGetir/@item.ID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/Birimler/GuncelleBilgiGetir/@item.ID" class="btn btn-warning">GÜNCELLE</a></td>
+
+            </tr>
+        }
+
+    </tbody>
+
+
+</table>
+
+<a class="btn btn-success" href="/Birimler/Ekle/" style="margin-top:10px;">Birim Ekle</a>
+
